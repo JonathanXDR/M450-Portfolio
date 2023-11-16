@@ -19,7 +19,35 @@ boolean test_calculate_price(){
     double price;
     boolean test_ok = true;
 
-    < your code>
+    // Testfall 1
+    double price = calculatePrice(10000, 2000, 1000, 0, 5);
+    double expectedPrice = 10000 * 0.95 + 2000 + 1000;
+    if (price != expectedPrice) {
+        test_ok = false;
+        System.out.println("Test 1 Failed: Expected " + expectedPrice + ", got " + price);
+    }
+
+    // Testfall 2
+    price = calculatePrice(10000, 2000, 3000, 3, 5);
+    expectedPrice = 10000 * 0.95 + 2000 + 3000 * 0.9;
+    if (price != expectedPrice) {
+        test_ok = false;
+        System.out.println("Test 2 Failed: Expected " + expectedPrice + ", got " + price);
+    }
+
+    // Testfall 3
+    price = calculatePrice(10000, 2000, 5000, 5, 5);
+    expectedPrice = 10000 * 0.95 + 2000 + 5000 * 0.85;
+    if (price != expectedPrice) {
+        test_ok = false;
+        System.out.println("Test 3 Failed: Expected " + expectedPrice + ", got " + price);
+    }
+
+    if (test_ok) {
+        System.out.println("All tests passed successfully.");
+    } else {
+        System.out.println("Some tests failed.");
+    }
 }
 ```
 
