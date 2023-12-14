@@ -107,4 +107,28 @@ Für eine ausführlichere Anleitung und weitere Beispiele empfehle ich die offiz
 
 ## Aufgabe 3
 
+### Klassen
+
+- `Account`: Grundlage für Konten
+- `SavingsAccount`, `SalaryAccount`, `PromoYouthSavingsAccount`: Spezialisierte Kontotypen
+- `Booking`: Transaktionsdaten
+- `Bank`: Zentraler Knotenpunkt, Verwaltung von Konten
+- `BankUtils`: Hilfsfunktionen, Formatierung
+- `AccountBalanceComparator`, `AccountInverseBalanceComparator`: Sortierlogik für Konten
+
+### Zusammenhänge
+
+- Konto-Typen (`SavingsAccount`, `SalaryAccount`, `PromoYouthSavingsAccount`) erben von `Account`
+- `Booking` ist assoziiert mit `Account` für Buchungen
+- `Bank` integriert und verwaltet alle `Account`-Objekte
+- `BankUtils` bietet Formatierung für Bank- und Betragsdaten
+- `Account*Comparator` Klassen für Kontenvergleich und Sortierung
+
+### Funktionsweise
+
+- `Account`: Ein-/Auszahlungen, Überprüfung der Transaktionsfähigkeit
+- `Bank`: Erstellung von Konten, Kontostandsabfragen, Sortieren und Drucken von Kontoauszügen
+- `BankUtils`: Formatiert Beträge und Daten
+- Comparator-Klassen: Kontensortierung nach Kontostand
+
 ## Aufgabe 4
