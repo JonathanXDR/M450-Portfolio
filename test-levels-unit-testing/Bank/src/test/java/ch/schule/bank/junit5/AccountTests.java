@@ -1,15 +1,19 @@
 package ch.schule.bank.junit5;
 
 import ch.schule.Account;
-import ch.schule.SalaryAccount;
-import ch.schule.SavingsAccount;
+import ch.schule.Booking;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-
-import java.util.TreeMap;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+class ConcreteAccount extends Account {
+    ConcreteAccount(String id) {
+        super(id);
+    }
+}
 
 /**
  * Tests für die Klasse Account.
@@ -18,13 +22,20 @@ import static org.junit.jupiter.api.Assertions.*;
  * @version 1.0
  */
 public class AccountTests {
+    private Account account;
+
+    @BeforeEach
+    public void setUp() {
+        account = new ConcreteAccount("testAccount");
+    }
+
     /**
      * Tested die Initialisierung eines Kontos.
      */
     @Test
     public void testInit() {
-
-        fail("toDo");
+        assertEquals("testAccount", account.getId());
+        assertEquals(0, account.getBalance());
     }
 
     /**
@@ -32,7 +43,8 @@ public class AccountTests {
      */
     @Test
     public void testDeposit() {
-        fail("toDo");
+        assertTrue(account.deposit(20230101, 1000));
+        assertEquals(1000, account.getBalance());
     }
 
     /**
@@ -40,7 +52,9 @@ public class AccountTests {
      */
     @Test
     public void testWithdraw() {
-        fail("toDo");
+        account.deposit(20230101, 2000);
+        assertTrue(account.withdraw(20230102, 1000));
+        assertEquals(1000, account.getBalance());
     }
 
     /**
@@ -56,7 +70,10 @@ public class AccountTests {
      */
     @Test
     public void testCanTransact() {
-        fail("toDo");
+        assertTrue(account.canTransact(20230101));
+        account.deposit(20230101, 1000);
+        assertFalse(account.canTransact(20221231));
+        assertTrue(account.canTransact(20230102));
     }
 
     /**
@@ -64,7 +81,9 @@ public class AccountTests {
      */
     @Test
     public void testPrint() {
-        fail("toDo");
+        account.deposit(20230101, 1000);
+        account.withdraw(20230102, 500);
+        account.print();
     }
 
     /**
@@ -72,7 +91,8 @@ public class AccountTests {
      */
     @Test
     public void testMonthlyPrint() {
-        fail("toDo");
+        account.deposit(20230115, 1000);
+        account.withdraw(20230116, 500);
+        account.print(2023, 1);
     }
-
 }
