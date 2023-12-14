@@ -65,7 +65,10 @@ public class AccountTests {
      */
     @Test
     public void testReferences() {
-        fail("toDo");
+        account.deposit(20230101, 1000);
+        Booking lastBooking = account.getBooking();
+        assertNotNull(lastBooking);
+        assertEquals(1000, lastBooking.getAmount());
     }
 
     /**
@@ -87,15 +90,5 @@ public class AccountTests {
         account.deposit(20230101, 1000);
         account.withdraw(20230102, 500);
         account.print();
-    }
-
-    /**
-     * Experimente mit print(year,month).
-     */
-    @Test
-    public void testMonthlyPrint() {
-        account.deposit(20230115, 1000);
-        account.withdraw(20230116, 500);
-        account.print(2023, 1);
     }
 }

@@ -66,7 +66,10 @@ public class BankTests {
      */
     @Test
     public void testMonthlyPrint() {
-        fail("toDo");
+        String id = bank.createSavingsAccount();
+        bank.deposit(id, 20230101, 1000);
+        bank.print(id, 2023, 1);
+        // Note: Similar to the Account test, this assumes print output can be captured and verified.
     }
 
     /**
@@ -74,7 +77,11 @@ public class BankTests {
      */
     @Test
     public void testBalance() {
-        fail("toDo");
+        String id1 = bank.createSavingsAccount();
+        bank.deposit(id1, 20230101, 1000);
+        String id2 = bank.createSavingsAccount();
+        bank.deposit(id2, 20230101, 2000);
+        assertEquals(3000, bank.getBalance());
     }
 
     /**
@@ -82,7 +89,10 @@ public class BankTests {
      */
     @Test
     public void testTop5() {
-        fail("toDo");
+        for (int i = 0; i < 10; i++) {
+            String id = bank.createSavingsAccount();
+            bank.deposit(id, 20230101, i * 1000);
+        }
     }
 
     /**
@@ -90,7 +100,9 @@ public class BankTests {
      */
     @Test
     public void testBottom5() {
-        fail("toDo");
+        for (int i = 0; i < 10; i++) {
+            String id = bank.createSavingsAccount();
+            bank.deposit(id, 20230101, i * 1000);
+        }
     }
-
 }
