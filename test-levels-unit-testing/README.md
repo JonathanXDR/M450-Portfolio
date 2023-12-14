@@ -64,7 +64,7 @@ Nutzung von `@RunWith(Suite.class)` und `@Suite.SuiteClasses({TestClass1.class, 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({TestClass1.class, TestClass2.class})
 public class AllTests {
-    // Code nicht erforderlich
+    // Weiterer Code
 }
 ```
 
@@ -98,10 +98,10 @@ public class ParameterizedTest {
 ```
 
 Weiterführende Features
-Mockito Integration: Für das Mocken von Objekten und Abhängigkeiten in Tests.
-Hamcrest Matchers: Für erweiterte Assertions und lesbare Testcodes.
-Assumption: Für das Ignorieren von Tests unter bestimmten Bedingungen.
-Timeouts: Zum Abbrechen von Tests, die zu lange dauern.
+- Mockito Integration: Für das Mocken von Objekten und Abhängigkeiten in Tests.
+- Hamcrest Matchers: Für erweiterte Assertions und lesbare Testcodes.
+- Assumption: Für das Ignorieren von Tests unter bestimmten Bedingungen.
+- Timeouts: Zum Abbrechen von Tests, die zu lange dauern.
 Referenzseite
 Für eine ausführlichere Anleitung und weitere Beispiele empfehle ich die offizielle JUnit 5-Dokumentation: [JUnit 5 User Guide](https://junit.org/junit5/docs/current/user-guide/).
 
