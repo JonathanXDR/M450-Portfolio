@@ -1,47 +1,64 @@
 package ch.schule.bank.junit5;
 
 import ch.schule.Bank;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
 /**
- * Tests f�r die Klasse 'Bank'.
+ * Tests für die Klasse 'Bank'.
  *
  * @author xxxx
  * @version 1.0
  */
 public class BankTests {
+    private Bank bank;
+
+    @BeforeEach
+    public void setUp() {
+        bank = new Bank();
+    }
+
     /**
      * Tests to create new Accounts
      */
     @Test
     public void testCreate() {
-
-        fail("toDo");
+        assertNotNull(bank.createSavingsAccount());
+        assertNotNull(bank.createPromoYouthSavingsAccount());
+        assertNotNull(bank.createSalaryAccount(-5000));
     }
+
     /**
      * Testet das Einzahlen auf ein Konto.
      */
     @Test
     public void testDeposit() {
-        fail("toDo");
+        String id = bank.createSavingsAccount();
+        assertTrue(bank.deposit(id, 20230101, 1000));
+        assertEquals(1000, bank.getBalance(id));
     }
+
     /**
      * Testet das Abheben von einem Konto.
      */
     @Test
     public void testWithdraw() {
-        fail("toDo");
+        String id = bank.createSavingsAccount();
+        bank.deposit(id, 20230101, 2000);
+        assertTrue(bank.withdraw(id, 20230102, 1000));
+        assertEquals(1000, bank.getBalance(id));
     }
 
     /**
-     * Experimente mit print().
+     * Experimente mit print(year, month).
      */
     @Test
     public void testPrint() {
-        fail("toDo");
+        String id = bank.createSavingsAccount();
+        bank.deposit(id, 20230101, 1000);
+        bank.print(id);
     }
 
     /**
