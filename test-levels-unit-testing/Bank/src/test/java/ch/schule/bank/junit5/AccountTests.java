@@ -24,6 +24,9 @@ class ConcreteAccount extends Account {
 public class AccountTests {
     private Account account;
 
+    /**
+     * Test-Account initialisieren.
+     */
     @BeforeEach
     public void setUp() {
         account = new ConcreteAccount("testAccount");
