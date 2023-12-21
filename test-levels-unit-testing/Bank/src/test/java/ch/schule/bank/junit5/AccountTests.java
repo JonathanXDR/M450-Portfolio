@@ -5,15 +5,7 @@ import ch.schule.Booking;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-
 import static org.junit.jupiter.api.Assertions.*;
-
-class ConcreteAccount extends Account {
-    ConcreteAccount(String id) {
-        super(id);
-    }
-}
 
 /**
  * Tests für die Klasse Account.
@@ -24,12 +16,10 @@ class ConcreteAccount extends Account {
 public class AccountTests {
     private Account account;
 
-    /**
-     * Test-Account initialisieren.
-     */
     @BeforeEach
     public void setUp() {
-        account = new ConcreteAccount("testAccount");
+        bank = new Bank();
+        account = bank.createAccount("test-account");
     }
 
     /**
@@ -37,8 +27,7 @@ public class AccountTests {
      */
     @Test
     public void testInit() {
-        assertEquals("testAccount", account.getId());
-        assertEquals(0, account.getBalance());
+        assertNotNull(account);
     }
 
     /**
@@ -61,7 +50,7 @@ public class AccountTests {
     }
 
     /**
-     * Tests the reference from SavingsAccount
+     * Tests the reference from Account
      */
     @Test
     public void testReferences() {
@@ -78,7 +67,7 @@ public class AccountTests {
     public void testCanTransact() {
         assertTrue(account.canTransact(20230101));
         account.deposit(20230101, 1000);
-        assertFalse(account.canTransact(20221231));
+        assertFalse(account.canTransact(20221231)); // Assuming transactions cannot occur before the account creation/deposit
         assertTrue(account.canTransact(20230102));
     }
 

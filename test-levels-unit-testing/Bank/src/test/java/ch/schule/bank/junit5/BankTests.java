@@ -69,7 +69,6 @@ public class BankTests {
         String id = bank.createSavingsAccount();
         bank.deposit(id, 20230101, 1000);
         bank.print(id, 2023, 1);
-        // Note: Similar to the Account test, this assumes print output can be captured and verified.
     }
 
     /**
